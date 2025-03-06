@@ -37,6 +37,13 @@ export function Navbar() {
     <Box py="30px" px={{ base: "20px", lg: "50px" }}>
       <Flex direction="row" justifyContent="space-between">
         <Box my="auto">
+        <Image 
+            src="/images/bfhcoindogsymbol.png"  // Change this to your actual image path
+            alt="BFHEVM Logo"
+            boxSize="55px" // Adjust the size as needed
+            display="inline-block"
+            mr="12px" // Add some spacing between the logo and text
+          />
           <Heading
             as={Link}
             href="/"
@@ -44,9 +51,10 @@ export function Navbar() {
             bgGradient="linear(to-l, #7928CA, #FF0080)"
             bgClip="text"
             fontWeight="extrabold"
+            size="2xl"
           >
             {/* Replace this with your own branding */}
-            THIRDMART
+            BFHEVM
           </Heading>
         </Box>
         <Box display={{ lg: "block", base: "none" }}>
@@ -57,7 +65,7 @@ export function Navbar() {
             <ConnectButton
               client={client}
               theme={colorMode}
-              connectButton={{ style: { height: "56px" } }}
+              connectButton={{ style: { height: "60px" } }}
             />
           )}
         </Box>
@@ -117,7 +125,7 @@ function ToggleThemeButton() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Button height="56px" w="56px" onClick={toggleColorMode} mr="10px">
-      {colorMode === "light" ? <FaRegMoon /> : <IoSunny />}
+      {colorMode === "dark" ? <FaRegMoon /> : <IoSunny />}
     </Button>
   );
 }

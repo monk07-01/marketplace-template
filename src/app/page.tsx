@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation"; // Import useRouter
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { NFT_CONTRACTS } from "@/consts/nft_contracts";
 import { Link } from "@chakra-ui/next-js";
 import {
@@ -13,17 +15,60 @@ import {
   Stack,
   StackDivider,
   Text,
+  Button,
 } from "@chakra-ui/react";
+import GenerateNFTPage from "./generate-nft";
+import router from "next/router";
+
 
 export default function Home() {
+  const router = useRouter(); // useRouter now works in client-side
   return (
-    <Flex>
+
+    <Flex position="relative">
+      {/* Left Side Image */}
+      <Image 
+        src="/images/bfhcoindogsymbol.png" 
+        alt="Left Logo" 
+        position="absolute" 
+        left="0" 
+        top="10%" 
+        transform="translateY(-50%)"
+        boxSize="290px"
+      />
+      <Image 
+        src="/images/bfhcoindogsymbol.png" 
+        alt="Left Logo" 
+        position="absolute" 
+        left="0" 
+        top="40%" 
+        transform="translateY(-50%)"
+        boxSize="300px"
+      />
+      <Image 
+        src="/images/bfhcoindogsymbol.png" 
+        alt="Left Logo" 
+        position="absolute" 
+        right="0" 
+        top="10%" 
+        transform="translateY(-50%)"
+        boxSize="290px"
+      />
+      <Image 
+        src="/images/bfhcoindogsymbol.png" 
+        alt="Left Logo" 
+        position="absolute" 
+        right="0" 
+        top="40%" 
+        transform="translateY(-50%)"
+        boxSize="300px"
+      />
       <Box mt="24px" m="auto">
         <Flex direction="column" gap="4">
           {/* Delete this <Card /> in your own app */}
           <Card border="1px" maxW="90vw" mx="auto">
             <CardHeader>
-              <Heading size="md">Marketplace Template v2</Heading>
+              <Heading size="md">BFH = Home of Value Based Assets</Heading>
             </CardHeader>
 
             <CardBody>
@@ -53,6 +98,21 @@ export default function Home() {
             gap="5"
             justifyContent="space-evenly"
           >
+          {/* Button to navigate to NFT generation page */}
+          <Box textAlign="center" mt="20px">
+            <Button
+              padding="10px 20px"
+              fontSize="16px"
+              backgroundColor="#4CAF50"
+              color="white"
+              border="none"
+              borderRadius="5px"
+              cursor="pointer"
+              onClick={() => router.push("/generate-nft")}
+            >
+              Generate NFT
+            </Button>
+          </Box>
             {NFT_CONTRACTS.map((item) => (
               <Link
                 _hover={{ textDecoration: "none" }}
@@ -62,7 +122,7 @@ export default function Home() {
                 href={`/collection/${item.chain.id.toString()}/${item.address}`}
               >
                 <Image src={item.thumbnailUrl} />
-                <Text fontSize="large" mt="10px">
+                <Text fontSize="large" mt="14px">
                   {item.title}
                 </Text>
               </Link>
@@ -77,37 +137,28 @@ export default function Home() {
 // Delete this in your own app
 const _latestUpdates: Array<{ title: string; bullet_points: string[] }> = [
   {
-    title: "Latest software",
+    title: "VBA - Value Based Assets (Tokens or NFT's)",
     bullet_points: [
-      "Shipped with the latest thirdweb SDK (v5) and Next.js 14 (App router)",
+      "BFH is only the home of Value Based Assets as BFH promotes Value over Financial Gain",
+      "It is extremely necessary for consumers to get a Valuable product"
     ],
   },
   {
-    title: "Multi-chain",
+    title: "Why Value Based?",
     bullet_points: [
-      "Seamlessly trade and browse items on multiple chains",
-      "You'd have to deploy a thirdweb Marketplace V3 contract on each of the chains you want to support",
+      "In the times where Crypto is becoming a go-to for people, it's also necessary",
+      "for the Market to pivot and provide something valuable to its consumers.", 
+      "Like Crypto-Coins have value that is based of its underlying protocol, in a very simialar way",
+      "these Tokens would derive value from the service or product that the creator would like to provide",
     ],
   },
   {
-    title: "Multiple collections supported",
+    title: "For Example",
     bullet_points: [
-      "The new template now supports multiple collections, you can view your owned NFTs and your listings",
-    ],
-  },
-  {
-    title: "Upcoming features",
-    bullet_points: [
-      "Select different currencies (ERC20) when creating listings",
-      "UI for English Auctions",
-    ],
-  },
-  {
-    title: "Contribute",
-    bullet_points: [
-      "We welcome all contributions from the community.",
-      "Found a bug or have some suggestions? Create a GitHub issue!",
-      "Repo: https://github.com/thirdweb-example/marketplace-template",
+      "A type of token or VBA that is issued by someone who is providing Value like:",
+      "Value based Fair Barter - Product Exchange for Similar Valued",
+      "Access Pass Tokens or NFT's - Tokens act as membership passes or Subscription", 
+      "these Tokens would derive value from the service or product that the creator would like to provide",
     ],
   },
 ];
