@@ -41,7 +41,7 @@ export default function Home() {
         alt="Left Logo" 
         position="absolute" 
         left="0" 
-        top="70%" 
+        top="73%" 
         transform="translateY(-50%)"
         boxSize="300px"
       />
@@ -59,7 +59,7 @@ export default function Home() {
         alt="Left Logo" 
         position="absolute" 
         right="0" 
-        top="70%" 
+        top="73%" 
         transform="translateY(-50%)"
         boxSize="300px"
       />

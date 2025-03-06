@@ -15,6 +15,7 @@ import {
   useToast,
   Card,
   CardBody,
+  Text,
 } from "@chakra-ui/react";
 
 const GenerateNFTPage = () => {
@@ -23,13 +24,25 @@ const GenerateNFTPage = () => {
   const [nftImage, setNftImage] = useState("");
   const [nftTraits, setNftTraits] = useState("");
   const [deploymentMethod, setDeploymentMethod] = useState("hardhat");
+  const [purpose, setPurpose] = useState("value-based");
   const [isGenerating, setIsGenerating] = useState(false);
   const toast = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsGenerating(true);
 
+    if (purpose === "just-for-fun") {
+      toast({
+        title: "NFT cannot be issued just for fun.",
+        description: "NFTs must have value.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    setIsGenerating(true);
     try {
       await generateNFTOnChain(nftName, nftDescription, nftImage, nftTraits, deploymentMethod);
       toast({
@@ -144,7 +157,20 @@ const GenerateNFTPage = () => {
                 />
               </FormControl>
 
-              {/* Deployment Method Dropdown */}
+              <FormControl>
+                <FormLabel>Purpose of NFT</FormLabel>
+                <Select
+                  value={purpose}
+                  onChange={(e) => setPurpose(e.target.value)}
+                  bg="gray.800"
+                  border="none"
+                  _focus={{ bg: "gray.700" }}
+                >
+                  <option value="value-based">Value Based</option>
+                  <option value="just-for-fun">Just for Fun</option>
+                </Select>
+              </FormControl>
+
               <FormControl>
                 <FormLabel>Select Deployment Method</FormLabel>
                 <Select
