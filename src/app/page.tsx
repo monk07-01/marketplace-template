@@ -32,7 +32,7 @@ export default function Home() {
         alt="Left Logo" 
         position="absolute" 
         left="0" 
-        top="10%" 
+        top="30%" 
         transform="translateY(-50%)"
         boxSize="290px"
       />
@@ -41,7 +41,7 @@ export default function Home() {
         alt="Left Logo" 
         position="absolute" 
         left="0" 
-        top="40%" 
+        top="70%" 
         transform="translateY(-50%)"
         boxSize="300px"
       />
@@ -50,7 +50,7 @@ export default function Home() {
         alt="Left Logo" 
         position="absolute" 
         right="0" 
-        top="10%" 
+        top="30%" 
         transform="translateY(-50%)"
         boxSize="290px"
       />
@@ -59,7 +59,7 @@ export default function Home() {
         alt="Left Logo" 
         position="absolute" 
         right="0" 
-        top="40%" 
+        top="70%" 
         transform="translateY(-50%)"
         boxSize="300px"
       />
@@ -112,21 +112,21 @@ export default function Home() {
             >
               Generate NFT
             </Button>
+              {/* Navigate to Collections Page */}
+            <Button
+              padding="10px 20px"
+              fontSize="16px"
+              backgroundColor="#007BFF"
+              color="white"
+              border="none"
+              borderRadius="5px"
+              cursor="pointer"
+              onClick={() => router.push("/collections")}
+            >
+            View Collections
+            </Button>
           </Box>
-            {NFT_CONTRACTS.map((item) => (
-              <Link
-                _hover={{ textDecoration: "none" }}
-                w={300}
-                h={400}
-                key={item.address}
-                href={`/collection/${item.chain.id.toString()}/${item.address}`}
-              >
-                <Image src={item.thumbnailUrl} />
-                <Text fontSize="large" mt="14px">
-                  {item.title}
-                </Text>
-              </Link>
-            ))}
+           
           </Flex>
         </Flex>
       </Box>
@@ -158,7 +158,6 @@ const _latestUpdates: Array<{ title: string; bullet_points: string[] }> = [
       "A type of token or VBA that is issued by someone who is providing Value like:",
       "Value based Fair Barter - Product Exchange for Similar Valued",
       "Access Pass Tokens or NFT's - Tokens act as membership passes or Subscription", 
-      "these Tokens would derive value from the service or product that the creator would like to provide",
     ],
   },
 ];
