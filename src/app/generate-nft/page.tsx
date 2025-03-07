@@ -21,8 +21,8 @@ import {
 import { Global } from "@emotion/react";
 
 // Dummy imports for Hardhat and Truffle deployments (assumed to be set up in the backend)
-import { deployWithHardhat } from "../thirdweb/hardhat"; // Function for Hardhat deployment
-import { deployWithTruffle } from "../lib/truffle"; // Function for Truffle deployment
+// import { deployWithHardhat } from "../thirdweb/hardhat"; // Function for Hardhat deployment
+// import { deployWithTruffle } from "../lib/truffle"; // Function for Truffle deployment
 
 const GenerateNFTPage = () => {
   const [nftName, setNftName] = useState("");
@@ -40,11 +40,11 @@ const GenerateNFTPage = () => {
 
     setIsDeploying(true);
     try {
-      if (deploymentMethod === "hardhat") {
-        await deployWithHardhat(nftName, nftDescription, nftImage, nftTraits);
-      } else if (deploymentMethod === "truffle") {
-        await deployWithTruffle(nftName, nftDescription, nftImage, nftTraits);
-      }
+      // if (deploymentMethod === "hardhat") {
+      //   await deployWithHardhat(nftName, nftDescription, nftImage, nftTraits);
+      // } else if (deploymentMethod === "truffle") {
+      //   await deployWithTruffle(nftName, nftDescription, nftImage, nftTraits);
+      // }
 
       toast({
         title: "NFT Contract Deployed Successfully!",
@@ -231,30 +231,30 @@ const GenerateNFTPage = () => {
   );
 };
 
-const deployWithHardhat = async (
-  name: string,
-  description: string,
-  image: string,
-  traits: string
-) => {
-  // Simulate deployment for Hardhat
-  console.log("Deploying with Hardhat:", { name, description, image, traits });
-  // Simulated delay for deployment
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-  // Actual Hardhat deployment logic would go here
-};
+// const deployWithHardhat = async (
+//   name: string,
+//   description: string,
+//   image: string,
+//   traits: string
+// ) => {
+//   // Simulate deployment for Hardhat
+//   console.log("Deploying with Hardhat:", { name, description, image, traits });
+//   // Simulated delay for deployment
+//   await new Promise((resolve) => setTimeout(resolve, 3000));
+//   // Actual Hardhat deployment logic would go here
+// };
 
-const deployWithTruffle = async (
-  name: string,
-  description: string,
-  image: string,
-  traits: string
-) => {
-  // Simulate deployment for Truffle
-  console.log("Deploying with Truffle:", { name, description, image, traits });
-  // Simulated delay for deployment
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-  // Actual Truffle deployment logic would go here
-};
+// const deployWithTruffle = async (
+//   name: string,
+//   description: string,
+//   image: string,
+//   traits: string
+// ) => {
+//   // Simulate deployment for Truffle
+//   console.log("Deploying with Truffle:", { name, description, image, traits });
+//   // Simulated delay for deployment
+//   await new Promise((resolve) => setTimeout(resolve, 3000));
+//   // Actual Truffle deployment logic would go here
+// };
 
 export default GenerateNFTPage;

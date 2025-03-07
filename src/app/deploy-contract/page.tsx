@@ -1,40 +1,53 @@
-import { ThirdwebSDK } from "@thirdweb-dev/sdk";
-import fs from "fs";
+"use client";
 
-// Private key for your wallet (do not hardcode this in production)
-const privateKey = "<your-private-key-here>";
+import { useState } from "react";
 
-// RPC URL for your EVM-compatible Cosmos chain (replace with your actual RPC URL)
-const chainRPC = "https://rpc-bfhevm.xyz:8443";  // Replace with your actual RPC URL
+export default function DeployNFTPage() {
+  const [loading, setLoading] = useState(false);
+  const [contractAddress, setContractAddress] = useState("");
+  const [error, setError] = useState("");
 
-// Instantiate the SDK using the private key and your chain RPC
-const sdk = ThirdwebSDK.fromPrivateKey(privateKey, chainRPC);
+  const deployContract = async () => {
+    setLoading(true);
+    setError("");
+    setContractAddress("");
 
-const deployNFTCollection = async () => {
-  try {
-    // Deploy the NFT collection (ERC-721 contract)
-    const deployedAddress = await sdk.deployer.deployNFTCollection({
-      name: "My NFT Collection",
-      primary_sale_recipient: "0x...", // Replace with the actual recipient address
-    });
+    try {
+      const response = await fetch("/api/deploy-nft", {
+        method: "POST",
+      });
 
-    console.log("Deployed contract at address:", deployedAddress);
+      const data = await response.json();
 
-    // Access the deployed contract
-    const contract = await sdk.getContract(deployedAddress);
+      if (response.ok) {
+        setContractAddress(data.contractAddress);
+      } else {
+        setError(data.error || "Failed to deploy NFT contract");
+      }
+    } catch (err) {
+      setError("Error connecting to the API");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    // Mint an NFT
-    const tx = await contract.erc721.mint({
-      name: "Cool NFT",
-      description: "Minted NFT from code!",
-      image: fs.readFileSync("path/to/image.png"), // This can be an image url or a local file
-    });
+  return (
+    <div className="p-4">
+      <h1 className="text-xl font-bold">Deploy NFT Collection</h1>
+      <button
+        onClick={deployContract}
+        disabled={loading}
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        {loading ? "Deploying..." : "Deploy NFT Contract"}
+      </button>
 
-    console.log("NFT minted:", tx);
-  } catch (error) {
-    console.error("Error deploying or minting NFT:", error);
-  }
-};
-
-// Call the deployNFTCollection function
-deployNFTCollection();
+      {contractAddress && (
+        <p className="mt-4 text-green-600">
+          ✅ Deployed at: <span className="font-mono">{contractAddress}</span>
+        </p>
+      )}
+      {error && <p className="mt-4 text-red-600">❌ {error}</p>}
+    </div>
+  );
+}

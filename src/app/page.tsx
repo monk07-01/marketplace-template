@@ -17,7 +17,7 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
-import GenerateNFTPage from "./generate-nft";
+import GenerateNFTPage from "@/app/generate-nft/page";
 import router from "next/router";
 import { motion } from "framer-motion";
 
