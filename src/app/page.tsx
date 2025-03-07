@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import GenerateNFTPage from "./generate-nft";
 import router from "next/router";
-
+import { motion } from "framer-motion";
 
 export default function Home() {
   const router = useRouter(); // useRouter now works in client-side
@@ -27,110 +27,206 @@ export default function Home() {
 
     <Flex position="relative">
       {/* Left Side Image */}
-      <Image 
-        src="/images/bfhcoindogsymbol.png" 
-        alt="Left Logo" 
-        position="absolute" 
-        left="0" 
-        top="30%" 
-        transform="translateY(-50%)"
-        boxSize="290px"
+      <motion.img
+        src="/images/bfhcoindogsymbol.png"
+        alt="Left Top Logo"
+        style={{
+          position: "absolute",
+          left: "58",
+          top: "0%",
+          width: "290px",
+        }}
+        animate={{
+          x: [Math.random() * 300 - 150, Math.random() * 300 - 150], // Moves left & right
+          y: [Math.random() * 300 - 150, Math.random() * 300 - 150], // Moves up & down
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
       />
-      <Image 
-        src="/images/bfhcoindogsymbol.png" 
-        alt="Left Logo" 
-        position="absolute" 
-        left="0" 
-        top="73%" 
-        transform="translateY(-50%)"
-        boxSize="300px"
+      <motion.img
+        src="/images/bfhcoindogsymbol.png"
+        alt="Left Top Logo"
+        style={{
+          position: "absolute",
+          left: "0",
+          top: "10%",
+          width: "290px",
+        }}
+        animate={{
+          x: [Math.random() * 300 - 150, Math.random() * 300 - 150], // Moves left & right
+          y: [Math.random() * 300 - 150, Math.random() * 300 - 150], // Moves up & down
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
       />
-      <Image 
-        src="/images/bfhcoindogsymbol.png" 
-        alt="Left Logo" 
-        position="absolute" 
-        right="0" 
-        top="30%" 
-        transform="translateY(-50%)"
-        boxSize="290px"
+      <motion.img
+        src="/images/bfhcoindogsymbol.png"
+        alt="Left Top Logo"
+        style={{
+          position: "absolute",
+          left: "20",
+          top: "45%",
+          width: "290px",
+        }}
+        animate={{
+          x: [Math.random() * 300 - 150, Math.random() * 300 - 150], // Moves left & right
+          y: [Math.random() * 300 - 150, Math.random() * 300 - 150], // Moves up & down
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
       />
-      <Image 
-        src="/images/bfhcoindogsymbol.png" 
-        alt="Left Logo" 
-        position="absolute" 
-        right="0" 
-        top="73%" 
-        transform="translateY(-50%)"
-        boxSize="300px"
-      />
-      <Box mt="24px" m="auto">
-        <Flex direction="column" gap="4">
-          {/* Delete this <Card /> in your own app */}
-          <Card border="1px" maxW="90vw" mx="auto">
-            <CardHeader>
-              <Heading size="md">BFH = Home of Value Based Assets</Heading>
-            </CardHeader>
 
-            <CardBody>
-              <Stack divider={<StackDivider />} spacing="4">
-                {_latestUpdates.map((item) => (
-                  <Box key={item.title}>
-                    <Heading size="xs" textTransform="uppercase">
-                      {item.title}
-                    </Heading>
-                    {item.bullet_points.map((pt) => (
-                      <Text pt="2" fontSize="sm" key={pt}>
-                        {pt}
-                      </Text>
-                    ))}
-                  </Box>
-                ))}
-              </Stack>
-            </CardBody>
-          </Card>
-          <Heading ml="20px" mt="40px">
-            Trending collections
-          </Heading>
-          <Flex
-            direction="row"
-            wrap="wrap"
-            mt="20px"
-            gap="5"
-            justifyContent="space-evenly"
+      {/* Left Bottom Image */}
+      <motion.img
+        src="/images/bfhcoindogsymbol.png"
+        alt="Left Bottom Logo"
+        style={{
+          position: "absolute",
+          left: "0",
+          top: "73%",
+          width: "300px",
+        }}
+        animate={{
+          x: [Math.random() * 300 - 150, Math.random() * 300 - 150],
+          y: [Math.random() * 300 - 150, Math.random() * 300 - 150],
+        }}
+        transition={{
+          duration: 2.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Right Top Image */}
+      <motion.img
+        src="/images/bfhcoindogsymbol.png"
+        alt="Right Top Logo"
+        style={{
+          position: "absolute",
+          right: "0",
+          top: "30%",
+          width: "290px",
+        }}
+        animate={{
+          x: [Math.random() * 300 - 150, Math.random() * 300 - 150],
+          y: [Math.random() * 300 - 150, Math.random() * 300 - 150],
+        }}
+        transition={{
+          duration: 2.2,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Right Bottom Image */}
+      <motion.img
+        src="/images/bfhcoindogsymbol.png"
+        alt="Right Bottom Logo"
+        style={{
+          position: "absolute",
+          right: "0",
+          top: "73%",
+          width: "300px",
+        }}
+        animate={{
+          x: [Math.random() * 300 - 150, Math.random() * 300 - 150],
+          y: [Math.random() * 300 - 150, Math.random() * 300 - 150],
+        }}
+        transition={{
+          duration: 2.8,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
+      />
+    <Box mt="24px" m="auto" maxW="90vw">
+      <Flex direction="column" gap="6">
+        {/* Stylish Card Container */}
+        <Card
+          border="2px solid gold"
+          borderRadius="15px"
+          boxShadow="0px 0px 20px rgba(255, 215, 0, 0.7)"
+          background="linear-gradient(135deg, #FFD700 0%, #FFAA00 100%)"
+          color="white"
+          textAlign="center"
+          p="6"
+        >
+          <CardHeader>
+            <Heading size="lg" color="black">
+              🌟 BFH = Home of Value-Based Assets 🌟
+            </Heading>
+          </CardHeader>
+
+          <CardBody>
+            <Stack divider={<StackDivider borderColor="whiteAlpha.600" />} spacing="4">
+              {_latestUpdates.map((item) => (
+                <Box key={item.title} p="3" borderRadius="10px" background="rgba(255, 255, 255, 0.1)">
+                  <Heading size="sm" textTransform="uppercase" color="black">
+                    {item.title}
+                  </Heading>
+                  {item.bullet_points.map((pt) => (
+                    <Text pt="2" fontSize="md" color="black" key={pt}>
+                      {pt}
+                    </Text>
+                  ))}
+                </Box>
+              ))}
+            </Stack>
+          </CardBody>
+        </Card>
+
+        {/* Action Buttons Section */}
+        <Box textAlign="center" mt="20px">
+          <Button
+            padding="12px 24px"
+            fontSize="18px"
+            background="gold"
+            color="black"
+            fontWeight="bold"
+            borderRadius="10px"
+            cursor="pointer"
+            boxShadow="0px 0px 15px rgba(255, 215, 0, 0.8)"
+            _hover={{ background: "#FFD700", transform: "scale(1.05)" }}
+            onClick={() => router.push("/generate-nft")}
+            mr="10px"
           >
-          {/* Button to navigate to NFT generation page */}
-          <Box textAlign="center" mt="20px">
-            <Button
-              padding="10px 20px"
-              fontSize="16px"
-              backgroundColor="#4CAF50"
-              color="white"
-              border="none"
-              borderRadius="5px"
-              cursor="pointer"
-              onClick={() => router.push("/generate-nft")}
-            >
-              Generate NFT
-            </Button>
-              {/* Navigate to Collections Page */}
-            <Button
-              padding="10px 20px"
-              fontSize="16px"
-              backgroundColor="#007BFF"
-              color="white"
-              border="none"
-              borderRadius="5px"
-              cursor="pointer"
-              onClick={() => router.push("/collections")}
-            >
-            View Collections
-            </Button>
-          </Box>
+            ✨ Generate NFT
+          </Button>
+
+          <Button
+            padding="12px 24px"
+            fontSize="18px"
+            background="#FFAA00"
+            color="black"
+            fontWeight="bold"
+            borderRadius="10px"
+            cursor="pointer"
+            boxShadow="0px 0px 15px rgba(255, 165, 0, 0.8)"
+            _hover={{ background: "#FFA500", transform: "scale(1.05)" }}
+            onClick={() => router.push("/collections")}
+          >
+            🖼 View Collections
+          </Button>
+        </Box>
+      </Flex>
+    </Box>
            
-          </Flex>
-        </Flex>
-      </Box>
     </Flex>
+
   );
 }
 
